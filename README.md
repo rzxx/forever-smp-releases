@@ -1,22 +1,22 @@
 # Forever SMP
 
-Client downloads and signed pack updates for Forever SMP.
+Client downloads and signed updates. / Клиентская сборка и подписанные обновления.
 
 ## Download / Скачать
 
 Open **[the latest release](https://github.com/rzxx/forever-smp-releases/releases/latest)**.
 
-- **Windows:** download `Forever-SMP-Setup-Windows-x64.zip`, extract it and run `Forever-SMP.exe`.
-- **Prism Launcher / Modrinth:** import the `.mrpack` file.
-- **Windows:** скачайте ZIP, распакуйте и запустите `Forever-SMP.exe`.
-- **Prism / Modrinth:** импортируйте файл `.mrpack`.
+- **Windows:** extract the setup ZIP and run `Forever-SMP.exe`.
+- **Prism / Modrinth:** import the `.mrpack`.
+- **Windows:** распакуйте ZIP и запустите `Forever-SMP.exe`.
+- **Prism / Modrinth:** импортируйте `.mrpack`.
 
-The launcher needs the Minecraft, Fabric and Java versions stated in the release. The setup app manages mods and maintained client presets; it does not install the Minecraft runtime or sign into your account.
+Set up Minecraft, Fabric and Java versions listed in the release in your launcher first. The setup app manages client mods/configs and does not sign into player accounts.
 
 ## Updates / Обновления
 
-Import the owner's private invitation once in the Windows app, then choose **Continue**. It checks the latest signed pack release, preserves saved optional choices, and shows changes before applying them. Close Minecraft before updating.
+The Windows app already knows the official update source and verification key. No invitation or GitHub account is needed. Open the app, check for updates, review changes and confirm installation. Close Minecraft first. Your optional choices are remembered.
 
-В приложении один раз откройте личное приглашение владельца, затем нажмите **Продолжить**. Приложение проверяет подписанный выпуск, сохраняет выбор необязательных модов и показывает изменения перед установкой. Перед обновлением закройте Minecraft.
+Официальный источник обновлений и ключ проверки уже встроены в приложение. Не нужны приглашение или аккаунт GitHub. Откройте приложение, проверьте обновления и подтвердите изменения. Перед установкой закройте Minecraft. Выбор необязательных модов сохраняется.
 
-The invitation, server address, access instructions and registration password are distributed privately. This repository contains only public client releases. Setup-app upgrades require downloading a new ZIP; pack updates work through the app.
+Server invitations add private server details only. The owner shares access instructions and registration passwords privately. Advanced settings are optional. Setup-app upgrades require downloading a new ZIP; pack updates work through the app.
