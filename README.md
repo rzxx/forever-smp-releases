@@ -19,4 +19,4 @@ The Windows app already knows the official update source and verification key. N
 
 Официальный источник обновлений и ключ проверки уже встроены в приложение. Не нужны приглашение или аккаунт GitHub. Откройте приложение, проверьте обновления и подтвердите изменения. Перед установкой закройте Minecraft. Выбор необязательных модов сохраняется.
 
-Server invitations add private server details only. The owner shares access instructions and registration passwords privately. Advanced settings are optional. Setup-app upgrades require downloading a new ZIP; pack updates work through the app.
+The owner sends the server address and registration password directly. Players copy their whitelist request from the app and send it to the owner. Advanced settings are optional. Setup-app upgrades require downloading a new ZIP; pack updates work through the app.
