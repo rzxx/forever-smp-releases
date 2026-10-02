@@ -2,10 +2,10 @@
 
 Pack releases are independent of installer releases. Version comes from `pack.toml`; notes, reviewed presets and optional features come from `release.toml`. The existing channel is `rzxx/forever-smp-releases`.
 
-In the private local workspace, update the pack pins/presets, bump the pack version and update both languages of notes, then run from the parent directory:
+In the owner's workspace, update the pack pins/presets, bump the pack version and update both languages of notes, then run from this repository:
 
 ```powershell
-./scripts/release.ps1 pack
+../scripts/release.ps1 pack
 ```
 
 That command runs the pack export checks on your PC, builds the recipe CLI, validates the recipe, signs it with the existing local pack key and verifies its signature. Output is `modpack/dist/releases/<pack-version>`. It does not build the desktop installer, run its UI tests or release it.
