@@ -6,6 +6,7 @@ param(
 $ErrorActionPreference = 'Stop'
 $sourceRoot = Split-Path -Parent $PSScriptRoot
 if ($ReleaseTool) { $ReleaseTool = (Resolve-Path -LiteralPath $ReleaseTool).Path }
+$InstallerRoot = [IO.Path]::GetFullPath($InstallerRoot, (Get-Location).Path)
 Push-Location $sourceRoot
 try {
     & (Join-Path $PSScriptRoot 'build.ps1')
