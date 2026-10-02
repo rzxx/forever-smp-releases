@@ -1,0 +1,7 @@
+# Apply these entries to the server-generated server.properties before opening access.
+online-mode=false
+white-list=true
+enforce-whitelist=true
+enforce-secure-profile=false
+enable-rcon=false
+enable-query=false

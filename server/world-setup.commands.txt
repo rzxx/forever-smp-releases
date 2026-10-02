@@ -1,0 +1,6 @@
+gamerule minecraft:players_sleeping_percentage 50
+execute in minecraft:overworld run worldborder center 0.0 0.0
+execute in minecraft:overworld run worldborder set 5000
+gamerule minecraft:players_sleeping_percentage
+execute in minecraft:overworld run worldborder get
+save-all flush

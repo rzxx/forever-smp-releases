@@ -1,0 +1,7 @@
+* text=auto eol=lf
+# Packwiz hashes bytes. Preserve the existing pack inputs on every platform.
+/pack.toml -text
+/index.toml -text
+/mods/** -text
+/config/** -text whitespace=cr-at-eol
+/release.toml -text

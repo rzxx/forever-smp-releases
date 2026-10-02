@@ -1,0 +1,22 @@
+name: Check pack
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26.x'
+      - name: Install pinned packwiz
+        shell: pwsh
+        run: go install github.com/packwiz/packwiz@v0.0.0-20260906154125-ef87d964f8cb
+      - name: Export and verify client archive
+        shell: pwsh
+        run: ./scripts/test.ps1
+      - name: Check committed pack hashes
+        run: git diff --exit-code -- pack.toml index.toml

@@ -1,23 +1,43 @@
 # Forever SMP
 
-Client downloads and signed updates. / Клиентская сборка и подписанные обновления.
+Pinned Minecraft modpack source and the existing signed pack release channel. Minecraft/Fabric versions are in `pack.toml`; the current pack requires Java 25 or newer.
 
-## Download / Скачать
+[Download the MRPack](https://github.com/rzxx/forever-smp-releases/releases/latest) · [Installer source and downloads](https://github.com/rzxx/forever-smp-installer)
 
-Open **[the latest release](https://github.com/rzxx/forever-smp-releases/releases/latest)**.
+Import the `.mrpack` into Prism or another compatible launcher, or use the Windows installer. Your launcher manages Minecraft, Fabric, Java and accounts. The owner supplies server access privately.
 
-- **Windows:** get the [latest installer](https://github.com/rzxx/forever-smp-installer/releases/latest), extract the ZIP and run `Forever-SMP.exe`.
-- **Prism / Modrinth:** import the `.mrpack`.
-- **Windows:** скачайте [последнее приложение](https://github.com/rzxx/forever-smp-installer/releases/latest), распакуйте ZIP и запустите `Forever-SMP.exe`.
-- **Prism / Modrinth:** импортируйте `.mrpack`.
+Импортируйте `.mrpack` в Prism или используйте Windows-приложение. Minecraft, Fabric, Java и учётные записи настраивает лаунчер. Доступ на сервер получите лично у владельца.
 
-Set up Minecraft, Fabric and Java versions listed in the release in your launcher first. The setup app manages client mods/configs and does not sign into player accounts.
+## Iterate on the pack
 
-## Updates / Обновления
+Install PowerShell 7 and [packwiz](https://github.com/packwiz/packwiz). Edit the pinned `mods/*.pw.toml` recipes, maintained `config` presets or `pack.toml`, then:
 
-The Windows app already knows the official update source and verification key. No invitation or GitHub account is needed. Open the app, check for updates, review changes and confirm installation. Close Minecraft first. Your optional choices are remembered.
+```powershell
+./scripts/build.ps1
+```
 
-Официальный источник обновлений и ключ проверки уже встроены в приложение. Не нужны приглашение или аккаунт GitHub. Откройте приложение, проверьте обновления и подтвердите изменения. Перед установкой закройте Minecraft. Выбор необязательных модов сохраняется.
+This refreshes `index.toml`/pack hashes and exports `dist/Forever-SMP-<pack-version>.mrpack`. Import that exact archive into a separate launcher instance. Check startup and the changed mods in game; a successful export is not a gameplay test. Client/server sides and optional choices come from the recipes. The exporter makes Distant Horizons optional on clients and required on the server.
 
-The owner sends the server address and registration password directly. Players copy their whitelist request from the app and send it to the owner. Advanced settings are optional. App 0.1.7 updates itself. App and pack releases are independent; one confirmation covers both, including automatic restart and continuation. Older apps need the new ZIP once to enable self-updates.
-Приложение 0.1.7 обновляет себя. Обновления приложения и сборки выпускаются независимо и подтверждаются вместе; перезапуск и завершение происходят автоматически. Для старых версий один раз скачайте новый ZIP.
+To test the pack through the current installer source, use `../installer/scripts/dev.ps1 -BuildPack`. The installer opens an isolated profile and game folder with this pack's local recipe.
+
+```powershell
+./scripts/build-pack-release.ps1   # MRPack + validated recipe in dist/releases/<version>
+./scripts/test.ps1                 # export, public-file allowlist, version and DH sides
+./scripts/build-server-upload.ps1  # separate server staging ZIP, no deployment
+```
+
+The recipe command needs Rust and the installer repo's `forever-release` CLI. By default it builds that CLI from a sibling `../installer` checkout. Pass `-InstallerRoot <checkout>` or `-ReleaseTool <exe>` to use another location. A plain MRPack build needs no installer checkout or Rust.
+
+[Release steps](docs/releases.md) cover signing and publishing to this same repository. Pack changes require no installer release. Bump `pack.toml` and update `release.toml` notes for a pack release; keep optional feature IDs stable so saved player choices survive.
+
+## Contents
+
+| Path | Purpose |
+| --- | --- |
+| `pack.toml`, `index.toml`, `mods` | Versioned packwiz manifest and pinned mods |
+| `config` | Reviewed client presets listed in `release.toml` |
+| `release.toml` | Bilingual release notes and installer optional-feature descriptions |
+| `server` | Generic server templates and [setup reference](server/README.md) |
+| `scripts` | Pack export, recipe export and server staging |
+
+`dist` is generated local output. Server worlds, account databases, whitelists, live host settings, addresses, credentials and invitations stay outside this repo. Third-party mod files are downloaded from their pinned upstream URLs and retain their own licenses.
