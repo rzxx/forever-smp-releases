@@ -9,7 +9,7 @@ if ($ReleaseTool) { $ReleaseTool = (Resolve-Path -LiteralPath $ReleaseTool).Path
 $InstallerRoot = [IO.Path]::GetFullPath($InstallerRoot, (Get-Location).Path)
 Push-Location $sourceRoot
 try {
-    & (Join-Path $PSScriptRoot 'build.ps1')
+    & (Join-Path $PSScriptRoot 'test.ps1')
     if (-not $ReleaseTool) {
         $manifest = Join-Path $InstallerRoot 'Cargo.toml'
         if (-not (Test-Path -LiteralPath $manifest -PathType Leaf)) {

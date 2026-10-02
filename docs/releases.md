@@ -1,20 +1,19 @@
 # Pack releases
 
-The existing channel is `rzxx/forever-smp-releases`. Version comes from `pack.toml`; notes, reviewed presets and optional features come from `release.toml`.
+Pack releases are independent of installer releases. Version comes from `pack.toml`; notes, reviewed presets and optional features come from `release.toml`. The existing channel is `rzxx/forever-smp-releases`.
 
-1. Change pins/presets, bump the pack version and update both languages of notes.
-2. Run `./scripts/build-pack-release.ps1`. This exports the MRPack and validates the client recipe using the CLI owned by the installer repository. Only the CLI is built; no desktop installer is rebuilt.
-3. Import the exported pack into a clean launcher instance. Check the affected mods in game; rehearse server changes on a world copy separately.
-4. Sign the generated recipe with the existing private pack key:
+In the private local workspace, update the pack pins/presets, bump the pack version and update both languages of notes, then run from the parent directory:
 
 ```powershell
-$version = '0.1.13' # use the actual new version
-$output = "dist/releases/$version"
-../installer/target/release/forever-release.exe sign "$output/release.json" ../.private/release-signing-key.txt "$output/release.signed.json"
+./scripts/release.ps1 pack
 ```
 
-5. Create a draft release in this repository with exactly `Forever-SMP-<version>.mrpack`, `release.json` and `release.signed.json`. Review/test the candidate before marking it latest.
+That command runs the pack export checks on your PC, builds the recipe CLI, validates the recipe, signs it with the existing local pack key and verifies its signature. Output is `modpack/dist/releases/<pack-version>`. It does not build the desktop installer, run its UI tests or release it.
 
-Preserve the stable filename `release.signed.json`, existing feature IDs, signing key and feed URL. Published releases are immutable. Installer source/release changes are independent; link its downloads instead of embedding a rebuilt installer in every pack release.
+Add `-Upload` to build locally and upload a draft to the pack repo; add `-Publish` to build locally and publish it as latest. Upload requires clean, committed source already pushed to this repo, including refreshed pack hashes. Bilingual notes and the three asset filenames are supplied automatically. Published versions are refused; a failed draft upload can be retried.
 
-`dist/releases` holds unsigned local candidates until the signing step. Keys, server addresses, invitations and deployment notes stay outside this repository. Server upload ZIPs are a separate deployment input; do not attach them to public client releases.
+For an unsigned build from this public checkout, run `./scripts/build-pack-release.ps1`; the recipe CLI comes from the installer repo via its sibling checkout or `-InstallerRoot` / `-ReleaseTool`. This compiles only the CLI, not the desktop app. Signing/upload automation stays in the private workspace. No GitHub Actions runner is used for checks or builds.
+
+The release assets are `Forever-SMP-<version>.mrpack`, `release.json` and `release.signed.json`. Preserve the stable signed feed filename, existing feature IDs, signing key and feed URL. Link the independent installer downloads instead of embedding a rebuilt installer in every pack release.
+
+Import the candidate into a clean launcher instance and test the changed mods in game before publishing; an export check is not a gameplay test. Server changes need their own deployment/backup checks. Server upload ZIPs, keys, addresses, invitations and live data never enter the client release.
