@@ -1,0 +1,7 @@
+lp group default permission set voicechat.speak false easyauth:authenticated=false
+lp group default permission set voicechat.listen false easyauth:authenticated=false
+lp group default permission set voicechat.groups false easyauth:authenticated=false
+lp group default permission set vanish.command.vanish false
+lp group default permission set vanish.command.vanish.other false
+lp group default permission set vanish.feature.view false
+lp group default permission set universal_graves.teleport false

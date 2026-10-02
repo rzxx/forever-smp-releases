@@ -1,0 +1,23 @@
+_version = 5
+
+# Distant Horizons 3.3.4 server settings. Missing keys use DH defaults.
+# This shares already generated terrain only; it does not explore or pre-generate chunks.
+[server]
+generationRequestRateLimit = 10
+maxGenerationRequestDistance = 128
+enableRealTimeUpdates = true
+realTimeUpdateDistanceRadiusInChunks = 128
+synchronizeOnLoad = true
+syncOnLoadRateLimit = 20
+maxSyncOnLoadRequestDistance = 128
+playerBandwidthLimit = 250
+globalBandwidthLimit = 1000
+
+[common.multiThreading]
+numberOfThreads = 2
+threadRunTimeRatio = "0.5"
+
+[common.worldGenerator]
+chunkGeneratorMode = "PRE_EXISTING_ONLY"
+generatorPlan = "CHUNKS_ONLY"
+limitIfServerUnhealthy = true

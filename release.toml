@@ -1,0 +1,46 @@
+# Public release description. No server address, invitation, whitelist or host instructions.
+notes_en = "Chat Heads, CreativeCore, Iris, Jade and Smooth Scrolling updated. Sodium stays on the stable build."
+notes_ru = "Обновлены Chat Heads, CreativeCore, Iris, Jade и Smooth Scrolling. Sodium остаётся на стабильной версии."
+public_presets = ["config/firstperson.json", "config/cameraoverhaul.toml", "config/ambientsounds-client.json", "config/presencefootsteps/userconfig.json5"]
+
+[[features]]
+id = "iris"
+en = "Shaders (Iris) — shader packs are separate"
+ru = "Шейдеры (Iris) — шейдерпаки отдельно"
+default = true
+
+[[features]]
+id = "distant-horizons"
+en = "Distant terrain (DH) — demanding on some PCs"
+ru = "Дальний ландшафт (DH) — может нагружать ПК"
+default = true
+
+[[features]]
+id = "jade"
+en = "Block information (Jade)"
+ru = "Информация о блоках (Jade)"
+default = true
+
+[[features]]
+id = "first-person"
+en = "Visible body in first person"
+ru = "Тело игрока от первого лица"
+default = true
+
+[[features]]
+id = "not-enough-animations"
+en = "Extra player animations"
+ru = "Дополнительные анимации игрока"
+default = true
+
+[[features]]
+id = "camera-overhaul"
+en = "Camera movement — smoothing disabled"
+ru = "Движения камеры — сглаживание выключено"
+default = true
+
+[[features]]
+id = "better-statistics"
+en = "Expanded statistics — beta, includes its library"
+ru = "Подробная статистика — бета, с нужной библиотекой"
+default = true

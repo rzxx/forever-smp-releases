@@ -1,0 +1,13 @@
+name = "InvRestore"
+filename = "invrestore-0.2.2.jar"
+side = "server"
+
+[download]
+url = "https://cdn.modrinth.com/data/neH5ooPP/versions/3JkGC72G/invrestore-0.2.2.jar"
+hash-format = "sha512"
+hash = "1430dd8b411fdbc48022de0e0b44db59d1c8900e254254f1912f155b53db40bd40e64bdf257ec0156bb128e7c148c1232ad3ca86f871343096e3f9c27eb7b514"
+
+[update]
+[update.modrinth]
+mod-id = "neH5ooPP"
+version = "3JkGC72G"

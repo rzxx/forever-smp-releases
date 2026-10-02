@@ -1,0 +1,13 @@
+name = "Vanish"
+filename = "vanish-1.6.16+26.3.jar"
+side = "server"
+
+[download]
+url = "https://cdn.modrinth.com/data/UL4bJFDY/versions/KgeCcJWw/vanish-1.6.16%2B26.3.jar"
+hash-format = "sha512"
+hash = "ee60a0ca4551a99929b9e2c6b9b13206b8246d9a35289790acc637e36174b35fe615acb470845ab9ac5a3e283051e2e00cf56b24af124d10414aa6e8db8917e3"
+
+[update]
+[update.modrinth]
+mod-id = "UL4bJFDY"
+version = "KgeCcJWw"
