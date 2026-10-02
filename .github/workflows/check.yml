@@ -1,7 +1,11 @@
 name: Check pack
 on:
   push:
+    branches: [main]
   pull_request:
+concurrency:
+  group: pack-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
